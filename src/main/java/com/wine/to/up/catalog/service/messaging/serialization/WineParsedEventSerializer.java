@@ -1,3 +1,4 @@
+/*
 package com.wine.to.up.catalog.service.messaging.serialization;
 
 import com.wine.to.up.parser.common.api.schema.ParserApi;
@@ -9,3 +10,4 @@ public class WineParsedEventSerializer implements Serializer<ParserApi.WineParse
         return data.toByteArray();
     }
 }
+*/

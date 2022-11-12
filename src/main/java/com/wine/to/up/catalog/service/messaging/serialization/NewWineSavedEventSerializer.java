@@ -1,3 +1,4 @@
+/*
 package com.wine.to.up.catalog.service.messaging.serialization;
 
 
@@ -12,3 +13,4 @@ public class NewWineSavedEventSerializer implements Serializer<NewWineSavedMessa
         return newWineSavedMessageSentEvent.toByteArray();
     }
 }
+*/

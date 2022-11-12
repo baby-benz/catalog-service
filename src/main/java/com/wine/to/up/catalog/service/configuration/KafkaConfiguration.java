@@ -1,3 +1,4 @@
+/*
 package com.wine.to.up.catalog.service.configuration;
 
 import com.wine.to.up.catalog.service.api.CatalogServiceApiProperties;
@@ -31,21 +32,27 @@ import java.util.Properties;
 @Configuration
 @Slf4j
 public class KafkaConfiguration {
-    /**
+    */
+/**
      * List of kafka servers
-     */
+     *//*
+
     @Value("${spring.kafka.bootstrap-server}")
     private String brokers;
 
-    /**
+    */
+/**
      * Application consumer group id
-     */
+     *//*
+
     @Value("${spring.kafka.consumer.group-id}")
     private String applicationConsumerGroupId;
 
-    /**
+    */
+/**
      * Creating general producer properties. Common for all the producers
-     */
+     *//*
+
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Properties producerProperties() {
@@ -56,9 +63,11 @@ public class KafkaConfiguration {
         return properties;
     }
 
-    /**
+    */
+/**
      * Creating general consumer properties. Common for all the consumers
-     */
+     *//*
+
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     Properties consumerProperties() {
@@ -95,7 +104,7 @@ public class KafkaConfiguration {
     KafkaMessageSender<UpdatePriceMessageSentEventOuterClass.UpdatePriceMessageSentEvent> updateWineEventKafkaMessageSender(
             Properties producerProperties,
             CatalogServiceApiProperties serviceApiProperties,
-            CatalogServiceMetricsCollector metricsCollector){
+            CatalogServiceMetricsCollector metricsCollector) {
 
         producerProperties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, UpdateWineEventSerializer.class.getName());
 
@@ -113,3 +122,4 @@ public class KafkaConfiguration {
         return new KafkaMessageSender<>(new KafkaProducer<>(producerProperties),  serviceApiProperties.getEventTopic(), metricsCollector);
     }
 }
+*/

@@ -30,22 +30,19 @@ public class WineService implements BaseCrudService<WineDTO> {
     public List<WineDTO> readAll() {
         return StreamSupport
                 .stream(wineRepository.findAll().spliterator(), false)
-                .map(new Function<Wine, WineDTO>() {
-                    @Override
-                    public WineDTO apply(Wine wine) {
-                        WineDTO wineDTO = new WineDTO();
-                        wineDTO.setId(wine.getWineID());
-                        wineDTO.setName(wine.getWineName());
-                        wineDTO.setProducer_id(wine.getWineProducer().getProducerID());
-                        wineDTO.setBrand_id(wine.getWineBrand().getBrandID());
-                        wineDTO.setRegion_id(wine.getWineRegion().stream().map(Region::getRegionID).collect(Collectors.toList()));
-                        wineDTO.setGrape_id(wine.getWineGrape().stream().map(Grape::getGrapeID).collect(Collectors.toList()));
-                        wineDTO.setAvg(wine.getStrength());
-                        wineDTO.setYear(wine.getProduction_year());
-                        wineDTO.setColor(wine.getWineColor().getColorName().toUpperCase());
-                        wineDTO.setSugar(wine.getWineSugar().getSugarName().toUpperCase());
-                        return wineDTO;
-                    }
+                .map(wine -> {
+                    WineDTO wineDTO = new WineDTO();
+                    wineDTO.setId(wine.getWineID());
+                    wineDTO.setName(wine.getWineName());
+                    wineDTO.setProducer_id(wine.getWineProducer().getProducerID());
+                    wineDTO.setBrand_id(wine.getWineBrand().getBrandID());
+                    wineDTO.setRegion_id(wine.getWineRegion().stream().map(Region::getRegionID).collect(Collectors.toList()));
+                    wineDTO.setGrape_id(wine.getWineGrape().stream().map(Grape::getGrapeID).collect(Collectors.toList()));
+                    wineDTO.setAvg(wine.getStrength());
+                    wineDTO.setYear(wine.getProduction_year());
+                    wineDTO.setColor(wine.getWineColor().getColorName().toUpperCase());
+                    wineDTO.setSugar(wine.getWineSugar().getSugarName().toUpperCase());
+                    return wineDTO;
                 })
                 .collect(Collectors.toList());
     }

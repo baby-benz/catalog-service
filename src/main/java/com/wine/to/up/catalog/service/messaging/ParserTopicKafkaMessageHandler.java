@@ -1,22 +1,12 @@
+/*
 package com.wine.to.up.catalog.service.messaging;
 
-import com.wine.to.up.catalog.service.domain.entities.*;
-import com.wine.to.up.catalog.service.repository.*;
 import com.wine.to.up.catalog.service.service.WineSaveService;
 import com.wine.to.up.commonlib.messaging.KafkaMessageHandler;
 import com.wine.to.up.parser.common.api.schema.ParserApi;
 import lombok.extern.slf4j.Slf4j;
-import com.wine.to.up.parser.common.api.schema.ParserApi.WineParsedEvent;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
 
 @Component
 @Slf4j
@@ -33,3 +23,4 @@ public class ParserTopicKafkaMessageHandler implements KafkaMessageHandler<WineP
     }
 }
 
+*/

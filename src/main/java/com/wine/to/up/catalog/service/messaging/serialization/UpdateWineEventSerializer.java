@@ -1,3 +1,4 @@
+/*
 package com.wine.to.up.catalog.service.messaging.serialization;
 
 import com.wine.to.up.catalog.service.api.message.UpdatePriceMessageSentEventOuterClass;
@@ -9,3 +10,4 @@ public class UpdateWineEventSerializer implements Serializer<UpdatePriceMessageS
         return updateWineEvent.toByteArray();
     }
 }
+*/

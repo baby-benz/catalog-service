@@ -1,19 +1,14 @@
 package com.wine.to.up.catalog.service.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.primitives.Bytes;
-//import com.wine.to.up.catalog.service.api.domain.UpdatePriceEvent;
 import com.wine.to.up.catalog.service.domain.dto.WinePositionDTO;
 import com.wine.to.up.catalog.service.domain.entities.WinePosition;
 import com.wine.to.up.catalog.service.domain.request.SettingsRequest;
 import com.wine.to.up.catalog.service.domain.request.SortByRequest;
-import com.wine.to.up.catalog.service.domain.response.WinePositionTrueResponse;
 import com.wine.to.up.catalog.service.domain.specifications.WinePositionSpecificationBuilder;
 import com.wine.to.up.catalog.service.repository.ShopRepository;
 import com.wine.to.up.catalog.service.repository.WinePositionRepository;
 import com.wine.to.up.catalog.service.repository.WineRepository;
-import com.wine.to.up.commonlib.messaging.KafkaMessageSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,7 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -38,7 +32,7 @@ public class WinePositionService implements BaseCrudService<WinePositionDTO> {
     private final WineRepository wineRepository;
     private final ShopRepository shopRepository;
 
-    private static final Map<String, String> matrixArguments = new HashMap<String, String>() {
+    private static final Map<String, String> matrixArguments = new HashMap<>() {
         {
             put("shopSite", "shop.shopSite");
             put("producerName", "wpWine.wineProducer.producerName");
@@ -132,12 +126,7 @@ public class WinePositionService implements BaseCrudService<WinePositionDTO> {
     public List<WinePositionDTO> readAll() {
         return StreamSupport
                 .stream(winePositionRepository.findAll().spliterator(), false)
-                .map(new Function<WinePosition, WinePositionDTO>() {
-                    @Override
-                    public WinePositionDTO apply(WinePosition winePosition) {
-                        return getWinePositionDTO(winePosition);
-                    }
-                })
+                .map(this::getWinePositionDTO)
                 .collect(Collectors.toList());
     }
 

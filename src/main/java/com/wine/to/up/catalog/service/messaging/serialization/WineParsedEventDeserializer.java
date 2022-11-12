@@ -1,3 +1,4 @@
+/*
 package com.wine.to.up.catalog.service.messaging.serialization;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -18,3 +19,4 @@ public class WineParsedEventDeserializer implements Deserializer<ParserApi.WineP
         }
     }
 }
+*/
