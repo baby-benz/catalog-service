@@ -1,6 +1,7 @@
 target/
 build/
 gradle/
+src/main/resources/init
 gradlew*
 *.gradle
 .asscache
