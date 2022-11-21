@@ -19,3 +19,4 @@ gradlew*
 .DS_Store
 .classpath
 bin
+/src/main/java/com/wine/to/up/catalog/service/service/

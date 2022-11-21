@@ -26,7 +26,7 @@ public class SetupService {
     private final static String SETTINGS_PATH = "src/main/resources/init/settings.csv";
     private final WineSaveService saveService;
 
-    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyEvent.class)
     public void setUpDataForService() {
         try {
             BufferedReader reader = Files.newBufferedReader(Path.of(SETTINGS_PATH));
