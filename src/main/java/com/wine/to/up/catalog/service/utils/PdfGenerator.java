@@ -20,7 +20,7 @@ public class PdfGenerator {
     public PdfGenerator() throws IOException, DocumentException {
     }
 
-    public byte[] generateWinePdf(WinePositionResponse winePositionResponse, Wine wine) throws DocumentException, IOException {
+    public byte[] generateWinePdf(WinePositionResponse winePositionResponse, Wine wine) throws DocumentException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         Document document = new Document(PageSize.LETTER, 0.75F, 0.75F, 0.75F, 0.75F);
         PdfWriter.getInstance(document, byteArrayOutputStream);
@@ -41,23 +41,25 @@ public class PdfGenerator {
     private void addTitlePage(Document document, WinePositionResponse winePositionResponse, Wine wine)
             throws DocumentException {
         Paragraph preface = new Paragraph();
-        preface.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(preface, 1);
 
-        Paragraph paragraph = new Paragraph();
-        paragraph.setFont(font1);
-        paragraph.add("Это вино подходит вам на 1%");
-        preface.add(paragraph);
+        Paragraph prefaceLine1 = new Paragraph("Это вино подходит вам на 1%", font1);
+        prefaceLine1.setAlignment(Element.ALIGN_CENTER);
+        preface.add(prefaceLine1);
 
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(wine.getWineName(), bold));
+        Paragraph prefaceLine2 = new Paragraph(wine.getWineName(), bold);
+        prefaceLine2.setAlignment(Element.ALIGN_CENTER);
+        preface.add(prefaceLine2);
 
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(
+        Paragraph prefaceLine3 = new Paragraph(
                 wine.getWineGrape().get(0).getGrapeName() + " " + wine.getProduction_year() + " г.",
-                bold));
+                bold);
+        prefaceLine3.setAlignment(Element.ALIGN_CENTER);
+        preface.add(prefaceLine3);
 
-        addEmptyLine(preface, 8);
+        addEmptyLine(preface, 6);
         String region = wine.getWineRegion().get(0).getRegionCountry();
         String resString = region + ", " + wine.getWineSugar().getSugarName() + ", " + wine.getWineColor().getColorName() + ", "+ wine.getStrength() + "%";
         float actual_price = winePositionResponse.getActual_price();
